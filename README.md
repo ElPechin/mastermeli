@@ -1,5 +1,10 @@
 # mastermeli
 Ejercicio en grupo con JoelNievas y AgustinCrosetto
 
-
-hola 
+-----------------------------------------
+|  Nombre            |Github Username   |
+-----------------------------------------
+|Agustin Crosetto    |   ElPechin       |
+|Vera Cristian       |   cevv92         |
+|Joel Nievas Arroyo  |  Joelnievas      |
+-----------------------------------------
