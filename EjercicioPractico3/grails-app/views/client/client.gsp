@@ -36,7 +36,7 @@
                     <select name="order" id="orderby">
                         <option value="distance">Distance</option>
                         <option value="agency_code">Agency Code</option>
-                        <option value="distance">Distancia</option>
+                        <option value="address">Address</option>
                     </select>
                 </td>
             </tr>

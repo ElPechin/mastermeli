@@ -8,35 +8,60 @@
 <%@ page import="grails.converters.JSON" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+
+    <style>
+        table, th, td, tr, h3 {
+            border: 2px solid black;
+            align-items: center;
+            vertical-align: middle;
+            text-align: center;
+            font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+        }
+        button, submitButton {
+            font-family: -apple-system;
+            align-content: end;
+        animation: alternate;
+        }
+    </style>
+
     <title>Agencias Encontradas</title>
-    <asset:javascript src="application.js"/>
+
 </head>
 
 <body>
-<table border="1">
-    <g:each var="i" in="${agencies}">
+<h3>Agencias Encontradas</h3>
+<div class="container">
+    <!-- Content here -->
+
+<table>
+    <tr><td colspan="13"><g:submitButton type="button" name="AGENCIAS FAVORITAS"/></td></tr>
+    <tr></tr>
+    <g:each var="agency" in="${agencies}">
         <tr>
-            <td bgcolor="#daa520">Agency Code</td><td>${i.agency_code}</td>
-            <td bgcolor="#daa520">Description</td></rd><td>${i.description}</td>
-            <td bgcolor="#daa520">Payment Method</td></tf><td>${i.payment_method_id}</td>
-            <td bgcolor="#daa520">City</td><td>${i.address.city}</td>
-            <td bgcolor="#daa520">State</td><td>${i.address.state}</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="button" onclick="addAgency(${i as JSON})">Like</button>
+            <th scope="row">Agency Code</th><th>${agency.agency_code}</th>
+            <td bgcolor="#daa520">Description</td><td>${agency.description}</td>
+            <td bgcolor="#daa520">Payment Method</td><td>${agency.payment_method_id}</td>
+            <td bgcolor="#daa520">City</td><td>${agency.address.city}</td>
+            <td bgcolor="#daa520">State</td><td>${agency.address.state}</td>
+            <td style="vertical-align:middle" colspan="2" action="addAgency">
+                <g:form id="${agency.id}" action="addAgency" method="post">
+                    <g:submitButton class="glyphicon glyphicon-align-left" name="FAVORITO" type="button"/>
+                </g:form>
             </td>
-            <td>
-                <button type="button" onclick="DeleteAgency(${i as JSON})">Dislike</button>
+            <td style="vertical-align:middle" colspan="2">
+                <g:form id="${agency.id}" action="deleteAgency" method="post">
+                    <g:submitButton name="DELETE" type="button"/>
+                </g:form>
             </td>
-        </tr>
-        <tr><td colspan="10"><br></td></tr>
+
     </g:each>
 </table>
+</div>
 </body>
 </html>
 
-<g:javascript>
+%{--<g:javascript>
  function addAgency(agency) {
     var URL="${createLink(controller: 'Client', action: 'addAgency')}";
     $.ajax({
@@ -48,7 +73,7 @@
         }
     });
   }
-</g:javascript>
+</g:javascript>--}%
 
 %{--
 
